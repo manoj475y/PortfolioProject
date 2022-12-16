@@ -1,26 +1,25 @@
 use portfolio_project;
-select * from coviddeaths
-order by 3,4;
+select * from coviddeaths;
 -- select * from covidvaccinations
 -- order by 3,4;
 -- select data that we are going to be using
 
 select location, date, total_cases,new_cases, total_deaths, population
 from coviddeaths
-order by 1,2;
+order by location,date;
 -- looking at total cases vs total deaths
 -- shows likelihood of dying if you contract covid in your country
 
 select location, date, total_cases, total_deaths, (total_cases/total_deaths)*100 death_percentage
 from coviddeaths
 where location like '%states%'
-order by 1,2;
+order by location,date;
 -- looking at total cases vs population
 
 select location, date, total_cases, population, (total_cases/population)*100 percentpopulationinfected
 from coviddeaths
 where location like '%states%'
-order by 1,2;
+order by location,date;
 -- looking at countries with highest infection rate compared to population
 
 select location,population,  max(total_cases) highestinfectedrate ,  max((total_cases/population))*100 percentpopulationinfected
